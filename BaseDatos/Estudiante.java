@@ -11,9 +11,20 @@ public class Estudiante implements Serializable {
 	private int NoCtrl;
 	private String nombre;
 	private char sexo;
+	private int edad;
 	private String horario;
 	private int numClases;
+	private String carrera;
+	
 	private ArrayList<Materias> materia;
+
+	public String getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(String carrera) {
+		this.carrera = carrera;
+	}
 
 	public int getNoCtrl() {
 		return NoCtrl;
@@ -21,6 +32,14 @@ public class Estudiante implements Serializable {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 
 	public char getSexo() {

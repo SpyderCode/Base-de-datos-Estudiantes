@@ -1,4 +1,4 @@
-package BaseDeDatos;
+package BaseDatos;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -18,6 +18,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Vista.AltaPaciente;
 
 //import Modelo.Paciente;
 
@@ -147,6 +149,13 @@ public class Tecnologico extends JFrame {
 		menuBar.add(mnDatosAlumno);
 		
 		JMenuItem mntmIngresar = new JMenuItem("Ingresar");
+		Tecnologico h=this;
+		mntmIngresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AltaEstudiante ventantaInterna=new AltaEstudiante("Alta de Usuario",true,true,true,h);
+				principal.add(ventantaInterna);
+			}
+		});
 		mnDatosAlumno.add(mntmIngresar);
 		
 		JMenuItem mntmPedir = new JMenuItem("Pedir");

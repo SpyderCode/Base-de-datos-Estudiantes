@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Vista.AltaPaciente;
+import Vista.Hospital;
 
 //import Modelo.Paciente;
 
@@ -29,6 +30,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
 
 public class Tecnologico extends JFrame {
 	 JDesktopPane principal;
@@ -149,11 +151,12 @@ public class Tecnologico extends JFrame {
 		menuBar.add(mnDatosAlumno);
 		
 		JMenuItem mntmIngresar = new JMenuItem("Ingresar");
-		Tecnologico h=this;
+		Tecnologico t=this;
 		mntmIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AltaEstudiante ventantaInterna=new AltaEstudiante("Alta de Usuario",true,true,true,h);
+				AltaEstudiante ventantaInterna=new AltaEstudiante("Alta de Usuario",true,true,true,t);
 				principal.add(ventantaInterna);
+				ventantaInterna.setVisible(true);
 			}
 		});
 		mnDatosAlumno.add(mntmIngresar);

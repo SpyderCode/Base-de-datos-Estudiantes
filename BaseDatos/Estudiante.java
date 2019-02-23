@@ -18,6 +18,16 @@ public class Estudiante implements Serializable {
 	
 	private ArrayList<Materias> materia;
 
+	public Estudiante(int noCtrl, String nombre, char sexo, int edad, String carrera,String horario) {
+		super();
+		NoCtrl = noCtrl;
+		this.nombre = nombre;
+		this.sexo = sexo;
+		this.edad = edad;
+		this.carrera = carrera;
+		this.horario=horario;
+	}
+
 	public String getCarrera() {
 		return carrera;
 	}
@@ -70,19 +80,6 @@ public class Estudiante implements Serializable {
 		this.NoCtrl = Noctrl;
 	}
 
-	public Estudiante() {
-		super();
-		this.materia = new ArrayList<Materias>();
-		this.numClases = 0;
-	}
-
-	public Estudiante(int noCtrl, String nombre, char sexo, String horario) {
-		this();
-		NoCtrl = noCtrl;
-		this.nombre = nombre;
-		this.sexo = sexo;
-		this.horario = horario;
-	}
 
 	@Override
 	public int hashCode() {

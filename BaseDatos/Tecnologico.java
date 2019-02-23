@@ -154,7 +154,7 @@ public class Tecnologico extends JFrame {
 		Tecnologico t=this;
 		mntmIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AltaEstudiante ventantaInterna=new AltaEstudiante("Alta de Usuario",true,true,true,t);
+				aLTAeSTUDIANTE2 ventantaInterna=new aLTAeSTUDIANTE2("Alta de Usuario",true,true,true,t);
 				principal.add(ventantaInterna);
 				ventantaInterna.setVisible(true);
 			}

@@ -145,6 +145,10 @@ public class Tecnologico extends JFrame {
 		mnHorarios.add(mntmEstudiante_1);
 		
 		JMenuItem mntmMaestro_1 = new JMenuItem("Maestro");
+		mntmMaestro_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		mnHorarios.add(mntmMaestro_1);
 		
 		JMenu mnDatosAlumno = new JMenu("Datos Alumno");

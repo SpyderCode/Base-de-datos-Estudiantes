@@ -135,6 +135,7 @@ public class aLTAeSTUDIANTE2 extends JInternalFrame{
 
 		ButtonGroup horario = new ButtonGroup();
 		JRadioButton rdbtnMatutino = new JRadioButton("Matutino");
+		rdbtnMatutino.setSelected(true);
 		rdbtnMatutino.setFont(new Font("Tahoma", Font.BOLD, 16));
 		rdbtnMatutino.setBackground(new Color(255, 140, 0));
 		rdbtnMatutino.setBounds(331, 242, 127, 25);
@@ -151,7 +152,9 @@ public class aLTAeSTUDIANTE2 extends JInternalFrame{
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				txtEdad.setText(null);
+				txtNoCtrl.setText(null);
+				txtNombre.setText(null);
 			}
 		});
 		btnCancelar.setBounds(405, 285, 97, 25);
@@ -169,8 +172,15 @@ public class aLTAeSTUDIANTE2 extends JInternalFrame{
 				if(rdbtnMatutino.isSelected()) horariox="Matutino";
 				if(rdbtnTarde.isSelected()) horariox="Tarde";
 				String carrerax=(String) CmbxCarrera.getItemAt(CmbxCarrera.getSelectedIndex());
+				Integer edadx=Integer.parseInt(txtEdad.getText());
 				Estudiante estudiantex=new Estudiante(NoCtrlx, nombrex, sexox, edadx, carrerax, horariox);
 				principal.lista.altaEstudiante(estudiantex);
+				JOptionPane.showMessageDialog(null, "Estudiante dado de alta", "Exito" ,JOptionPane.INFORMATION_MESSAGE);
+				
+				//Bora las cajas de texto
+				txtEdad.setText(null);
+				txtNoCtrl.setText(null);
+				txtNombre.setText(null);
 			}
 		});
 		btnDarDeAlta.setBounds(518, 285, 97, 25);

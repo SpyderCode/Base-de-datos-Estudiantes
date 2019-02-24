@@ -202,14 +202,13 @@ public class altaHorario extends JInternalFrame{
 				String horx=principal.lista.estudiantes.get(pos).getHorario();
 				
 				Materias materia=new Materias(asignatura,Profx,grupox,credx);
-				System.out.println("What");
 				if(horx.equals("Matutino")) {
 					hour=(String) comboBoxHoraMat.getItemAt(comboBoxHoraMat.getSelectedIndex());
 				}else {
 					hour=(String) comboBoxHorarioTarde.getItemAt(comboBoxHorarioTarde.getSelectedIndex());
 				}
 				
-				Horarios hor1=new Horarios("Lunes", "5-4");
+				Horarios hor1=new Horarios("Lunes", hour);
 				materia.AltaDia(hor1);
 				Horarios hor2=new Horarios("Martes", hour);
 				materia.AltaDia(hor2);
@@ -234,7 +233,7 @@ public class altaHorario extends JInternalFrame{
 		getContentPane().add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Images/mapaches.png"));
+		lblNewLabel.setIcon(new ImageIcon("Images/TecNM2017T.png"));
 		lblNewLabel.setBounds(0, 288, 472, 221);
 		getContentPane().add(lblNewLabel);
 

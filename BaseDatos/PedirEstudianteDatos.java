@@ -97,6 +97,7 @@ public class PedirEstudianteDatos extends JInternalFrame{
 				String [] encabezados= {"No. Ctrl","Nombre","Sexo","Edad","Carrera","Horario"};
 				Object datos[][]=new Object[principal.lista.estudiantes.size()][];
 				int renglon=0;
+				
 				for(Estudiante x:principal.lista.estudiantes) {
 					datos[renglon]=new Object[6];
 					datos[renglon][0]=x.getNoCtrl();
@@ -104,10 +105,10 @@ public class PedirEstudianteDatos extends JInternalFrame{
 					datos[renglon][2]=x.getSexo();
 					datos[renglon][3]=x.getEdad();
 					datos[renglon][4]=x.getCarrera();
-					System.out.println("All fine hear");
 					datos[renglon][5]=x.getHorario();
 					renglon++;
 				}
+				System.out.println("All fine here: PedirEstudiantesDatos.java");
 				DefaultTableModel modelo=new DefaultTableModel(datos,encabezados);
 				table.setModel(modelo);
 			}

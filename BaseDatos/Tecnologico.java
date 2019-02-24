@@ -189,6 +189,17 @@ public class Tecnologico extends JFrame {
 			}
 		});
 		mnDatosAlumno.add(mntmPedir);
+		
+		JMenuItem mntmBaja = new JMenuItem("Baja");
+		mntmBaja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				bajaEstudiante ventanaInterna=new bajaEstudiante("Dar de baja a un estudiante", true, true,
+						true, t);
+				principal.add(ventanaInterna);
+				ventanaInterna.setVisible(true);
+			}
+		});
+		mnDatosAlumno.add(mntmBaja);
 
 		JMenu mnNoCtrl = new JMenu("No. Ctrl");
 		menuBar.add(mnNoCtrl);

@@ -19,6 +19,14 @@ public class Materias {
 		this.horario = horario;
 	}
 
+	public ArrayList<Horarios> getHorario() {
+		return horario;
+	}
+
+	public void setHorario(ArrayList<Horarios> horario) {
+		this.horario = horario;
+	}
+
 	public String getAsignatura() {
 		return Asignatura;
 	}

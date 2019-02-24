@@ -16,6 +16,14 @@ public class Estudiante implements Serializable {
 	private int numClases;
 	private String carrera;
 	
+	public ArrayList<Materias> getMateria() {
+		return materia;
+	}
+
+	public void setMateria(ArrayList<Materias> materia) {
+		this.materia = materia;
+	}
+
 	private ArrayList<Materias> materia;
 
 	public Estudiante(int noCtrl, String nombre, char sexo, int edad, String carrera,String horario) {

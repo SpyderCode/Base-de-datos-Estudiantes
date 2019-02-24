@@ -175,8 +175,7 @@ public class aLTAeSTUDIANTE2 extends JInternalFrame{
 				Integer edadx=Integer.parseInt(txtEdad.getText());
 				Estudiante estudiantex=new Estudiante(NoCtrlx, nombrex, sexox, edadx, carrerax, horariox);
 				principal.lista.altaEstudiante(estudiantex);
-				JOptionPane.showMessageDialog(null, "Estudiante dado de alta", "Exito" ,JOptionPane.INFORMATION_MESSAGE);
-				
+//				JOptionPane.showMessageDialog(null, "Estudiante dado de alta", "Exito" ,JOptionPane.INFORMATION_MESSAGE);
 				//Bora las cajas de texto
 				txtEdad.setText(null);
 				txtNoCtrl.setText(null);

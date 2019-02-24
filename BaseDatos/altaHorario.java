@@ -194,24 +194,22 @@ public class altaHorario extends JInternalFrame{
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String asignatura=textClase.getText();
+				String Profx=textNombreProf.getText();
 				char grupox=txtGrupo.getText().charAt(0);
 				int credx=Integer.parseInt(txtNoCtrl.getText());
 				String horx=principal.lista.estudiantes.get(pos).getHorario();
 				
-				Materias materia=new Materias(asignatura,grupox,credx);
-				
+				Materias materia=new Materias(asignatura,Profx,grupox,credx);
+				System.out.println("What");
 				if(horx.equals("Matutino")) {
 					hour=(String) comboBoxHoraMat.getItemAt(comboBoxHoraMat.getSelectedIndex());
 				}else {
 					hour=(String) comboBoxHorarioTarde.getItemAt(comboBoxHorarioTarde.getSelectedIndex());
 				}
 				
-				/*
-				 * AQUI ME ESTA DANDO ERROR
-				 * 
-				 * */
-				Horarios hor1=new Horarios("Lunes", hour);
+				Horarios hor1=new Horarios("Lunes", "5-4");
 				materia.AltaDia(hor1);
 				Horarios hor2=new Horarios("Martes", hour);
 				materia.AltaDia(hor2);
@@ -219,12 +217,13 @@ public class altaHorario extends JInternalFrame{
 				materia.AltaDia(hor3);
 				Horarios hor4=new Horarios("Jueves", hour);
 				materia.AltaDia(hor4);
+				
 				if(chckbxViernes.isSelected()) {
 				Horarios hor5=new Horarios("Viernes", hour);
 				materia.AltaDia(hor5);
 				}
 				principal.lista.estudiantes.get(pos).altaMateria(materia);
-				System.out.println("Todo bien hasta aqui");
+				System.out.println("Test: "+principal.lista.estudiantes.get(pos).getMateria().get(0).getGrupo());
 			}
 		});
 		btnNewButton.setBounds(326, 288, 97, 25);
@@ -235,7 +234,7 @@ public class altaHorario extends JInternalFrame{
 		getContentPane().add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Ricardo Echaniz\\Documents\\Tecnologico\\Segundo A\u00F1o\\Estructuras de Datos\\Unidad 3 Datos Lineales\\eclipse-workspace\\Error en linea 1\\Images\\TecNM2017T.png"));
+		lblNewLabel.setIcon(new ImageIcon("Images/mapaches.png"));
 		lblNewLabel.setBounds(0, 288, 472, 221);
 		getContentPane().add(lblNewLabel);
 

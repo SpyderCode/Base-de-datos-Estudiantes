@@ -3,6 +3,7 @@ package BaseDatos;
 public class Horarios {
 	private String Dia;
 	private String hora;
+	public Horarios() {}
 	public Horarios(String dia, String hora) {
 		super();
 		Dia = dia;

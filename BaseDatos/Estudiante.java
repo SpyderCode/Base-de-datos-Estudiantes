@@ -15,17 +15,7 @@ public class Estudiante implements Serializable {
 	private String horario;
 	private int numClases;
 	private String carrera;
-	
-	public ArrayList<Materias> getMateria() {
-		return materia;
-	}
-
-	public void setMateria(ArrayList<Materias> materia) {
-		this.materia = materia;
-	}
-
-	private ArrayList<Materias> materia;
-
+	private ArrayList<Materias> materia=new ArrayList<Materias>();
 	public Estudiante(int noCtrl, String nombre, char sexo, int edad, String carrera,String horario) {
 		super();
 		NoCtrl = noCtrl;
@@ -82,6 +72,14 @@ public class Estudiante implements Serializable {
 
 	public void setHorario(String horario) {
 		this.horario = horario;
+	}
+
+	public ArrayList<Materias> getMateria() {
+		return materia;
+	}
+
+	public void setMateria(ArrayList<Materias> materia) {
+		this.materia = materia;
 	}
 
 	public Estudiante(int Noctrl) {

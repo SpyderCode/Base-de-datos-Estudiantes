@@ -75,7 +75,7 @@ public class PedirEstudianteDatos extends JInternalFrame{
 				int pos=principal.lista.buscarPosicionEstudiante(NoCtrlx);
 				for (int i = pos; i < principal.lista.estudiantes.size(); i++) {
 					datos[renglon]=new Object[6];
-					datos[renglon][0]=principal.lista.estudiantes.get(i).getNombre();
+					datos[renglon][0]=principal.lista.estudiantes.get(i).getNoCtrl();
 					datos[renglon][1]=principal.lista.estudiantes.get(i).getNombre();
 					datos[renglon][2]=principal.lista.estudiantes.get(i).getSexo();
 					datos[renglon][3]=principal.lista.estudiantes.get(i).getEdad();

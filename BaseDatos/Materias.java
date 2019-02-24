@@ -8,15 +8,16 @@ public class Materias {
 	private char grupo;
 	private int cred;
 	private String Profesor;
-	private ArrayList<Horarios> horario;
+	private ArrayList<Horarios> horario=new ArrayList<Horarios>();
 	
 	public Materias() {}
 
-	public Materias(String asignatura, char grupo, int cred) {
+	public Materias(String asignatura,String Profesor, char grupo, int cred) {
 		super();
-		Asignatura = asignatura;
+		this.Asignatura = asignatura;
 		this.grupo = grupo;
 		this.cred = cred;
+		this.Profesor=Profesor;
 	}
 
 	public String getProfesor() {

@@ -56,9 +56,10 @@ public class Tecnologico extends JFrame {
 	 * Create the frame.
 	 */
 	public Tecnologico() {
+		Tecnologico t=this;
 		setTitle("TECNOLOGICO DE ZACATECAS");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(10, 10, 800, 600);
+		setBounds(10, 10, 960, 642);
 		principal=new JDesktopPane();
 		principal.setBackground(Color.LIGHT_GRAY);
 		setContentPane(principal);
@@ -147,6 +148,9 @@ public class Tecnologico extends JFrame {
 		JMenuItem mntmMaestro_1 = new JMenuItem("Maestro");
 		mntmMaestro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				altaHorario ventantaInterna =new altaHorario("Alta de Usuario",true,true,true,t);
+				principal.add(ventantaInterna);
+				ventantaInterna.setVisible(true);
 			}
 		});
 		mnHorarios.add(mntmMaestro_1);
@@ -155,7 +159,6 @@ public class Tecnologico extends JFrame {
 		menuBar.add(mnDatosAlumno);
 		
 		JMenuItem mntmIngresar = new JMenuItem("Ingresar");
-		Tecnologico t=this;
 		mntmIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				aLTAeSTUDIANTE2 ventantaInterna=new aLTAeSTUDIANTE2("Alta de Usuario",true,true,true,t);

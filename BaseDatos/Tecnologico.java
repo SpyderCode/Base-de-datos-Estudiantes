@@ -166,6 +166,13 @@ public class Tecnologico extends JFrame {
 		mnDatosAlumno.add(mntmIngresar);
 		
 		JMenuItem mntmPedir = new JMenuItem("Pedir");
+		mntmPedir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PedirEstudianteDatos ventanaInterna=new PedirEstudianteDatos("Pedir Datos del Estudiante", true, true, true, t);
+				principal.add(ventanaInterna);
+				ventanaInterna.setVisible(true);
+			}
+		});
 		mnDatosAlumno.add(mntmPedir);
 		
 		JMenu mnNoCtrl = new JMenu("No. Ctrl");

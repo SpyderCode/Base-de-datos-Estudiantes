@@ -69,9 +69,11 @@ public class mostrarSeguro extends JInternalFrame {
 				int renglon=0;
 				for(Estudiante x:principal.lista.estudiantes) {
 					datos[renglon]=new Object[4];
+					if(x.isSeguro()) {
 					datos[renglon][0]=x.getNoCtrl();
 					datos[renglon][1]=x.getSeguroCode();
 					datos[renglon][2]=x.getNombre();
+					}
 					renglon++;
 				}
 				DefaultTableModel modelo=new DefaultTableModel(datos,encabezados);

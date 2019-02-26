@@ -226,7 +226,7 @@ public class Tecnologico extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Dar de alta");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IngresarSeguroSocial ventanaInterna=new IngresarSeguroSocial("Dar de baja a un estudiante", true, true,
+				IngresarSeguroSocial ventanaInterna=new IngresarSeguroSocial("Ingresar un seguro", true, true,
 						true, t);
 				principal.add(ventanaInterna);
 				ventanaInterna.setVisible(true);
@@ -237,7 +237,10 @@ public class Tecnologico extends JFrame {
 		JMenuItem mntmMostrar = new JMenuItem("Mostrar");
 		mntmMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				mostrarSeguro ventanaInterna=new mostrarSeguro("Mostrar seguro", true, true,
+						true, t);
+				principal.add(ventanaInterna);
+				ventanaInterna.setVisible(true);
 			}
 		});
 		mnSeguroSocial.add(mntmMostrar);

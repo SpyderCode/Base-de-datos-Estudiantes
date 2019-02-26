@@ -31,7 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class pedirHorario extends JInternalFrame {
-	// Obtener el contexto del Frame principal Hospital
+	// Obtener el contexto del Frame principal Tecnologico
 	public Tecnologico principal;
 	public Estudiante estudiantex = null;
 	public JPanel contentPanel;
@@ -56,8 +56,6 @@ public class pedirHorario extends JInternalFrame {
 		lblHorario.setForeground(Color.BLUE);
 		lblHorario.setBounds(12, 13, 240, 65);
 		getContentPane().add(lblHorario);
-
-		
 
 		txtIngreseNoctrl = new JTextField();
 		txtIngreseNoctrl.setText("Ingrese su No. Ctrl");
@@ -90,52 +88,64 @@ public class pedirHorario extends JInternalFrame {
 		textCarrera.setBackground(Color.LIGHT_GRAY);
 		textCarrera.setBounds(353, 92, 183, 22);
 		getContentPane().add(textCarrera);
-		
+
 		table = new JTable();
 		scrollDatos.setViewportView(table);
-		
+
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int NoCtrlx = Integer.parseInt(txtIngreseNoctrl.getText());
-				int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
-				int renglon = 0;
-				//Encabezado de la table
-				String[] encabezados = { "Asignatura", "Grupo", "Cred", "Lunes", "Martes", "Miercoles", "Jueves",
-						"Viernes", "Docente" };
-				Object datos[][] = new Object[principal.lista.estudiantes.get(pos).getMateria().size()][];
-				textCarrera.setText(principal.lista.estudiantes.get(pos).getCarrera());
-				textNombre.setText(principal.lista.estudiantes.get(pos).getNombre());
+				try {
+					int NoCtrlx = Integer.parseInt(txtIngreseNoctrl.getText());
+					int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
+					int renglon = 0;
+					
+					// Encabezado de la table
+					String[] encabezados = { "Asignatura", "Grupo", "Cred", "Lunes", "Martes", "Miercoles", "Jueves",
+							"Viernes", "Docente" };
+					
+					Object datos[][] = new Object[principal.lista.estudiantes.get(pos).getMateria().size()][];
+					
+					textCarrera.setText(principal.lista.estudiantes.get(pos).getCarrera());
+					textNombre.setText(principal.lista.estudiantes.get(pos).getNombre());
 
-				//Ingresa los daots al table
-				for (int i = 0; i < principal.lista.estudiantes.get(pos).getMateria().size(); i++) {
-					datos[renglon] = new Object[9];
-					//Asignatura
-					datos[renglon][0] = principal.lista.estudiantes.get(pos).getMateria().get(i).getAsignatura();
-					//Grupo
-					datos[renglon][1] = principal.lista.estudiantes.get(pos).getMateria().get(i).getGrupo();
-					//Cred
-					datos[renglon][2] = principal.lista.estudiantes.get(pos).getMateria().get(i).getCred();
-					//Lunes
-					datos[renglon][3] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(0).getHora();
-					//Martes
-					datos[renglon][4] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(1).getHora();
-					//Miercoled
-					datos[renglon][5] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(2).getHora();
-					//Jueves
-					datos[renglon][6] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(3).getHora();
-					//Viernes
-					if(principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().size()==5) {
-					datos[renglon][7] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(4).getHora();
-					}else {
-						datos[renglon][7]="-";//Si no tiene clases los viernes, pone un '-' en su lugar
+					// Ingresa los daots al table
+					for (int i = 0; i < principal.lista.estudiantes.get(pos).getMateria().size(); i++) {
+						datos[renglon] = new Object[9];
+						// Asignatura
+						datos[renglon][0] = principal.lista.estudiantes.get(pos).getMateria().get(i).getAsignatura();
+						// Grupo
+						datos[renglon][1] = principal.lista.estudiantes.get(pos).getMateria().get(i).getGrupo();
+						// Cred
+						datos[renglon][2] = principal.lista.estudiantes.get(pos).getMateria().get(i).getCred();
+						// Lunes
+						datos[renglon][3] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(0)
+								.getHora();
+						// Martes
+						datos[renglon][4] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(1)
+								.getHora();
+						// Miercoled
+						datos[renglon][5] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(2)
+								.getHora();
+						// Jueves
+						datos[renglon][6] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().get(3)
+								.getHora();
+						// Viernes
+						if (principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario().size() == 5) {
+							datos[renglon][7] = principal.lista.estudiantes.get(pos).getMateria().get(i).getHorario()
+									.get(4).getHora();
+						} else {
+							datos[renglon][7] = "-";// Si no tiene clases los viernes, pone un '-' en su lugar
+						}
+						// Profesor
+						datos[renglon][8] = principal.lista.estudiantes.get(pos).getMateria().get(i).getProfesor();
+						renglon++;
 					}
-					//Profesor
-					datos[renglon][8]=principal.lista.estudiantes.get(pos).getMateria().get(i).getProfesor();
-					renglon++;
+					DefaultTableModel modelo = new DefaultTableModel(datos, encabezados);
+					table.setModel(modelo);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
-				DefaultTableModel modelo=new DefaultTableModel(datos,encabezados);
-				table.setModel(modelo);
 			}
 		});
 		btnBuscar.setBounds(539, 13, 97, 25);

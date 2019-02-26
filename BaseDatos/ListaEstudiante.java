@@ -8,10 +8,11 @@ public class ListaEstudiante {
 	public ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 
 	public void altaEstudiante(Estudiante e) {
-		if(buscarPosicionEstudiante(e.getNoCtrl())==-1) {
+		//Primero busca a ver si existe el estudiante
+		if(buscarPosicionEstudiante(e.getNoCtrl())==-1) {//Si no, lo agrega a la lista
 			estudiantes.add(e);
 			JOptionPane.showMessageDialog(null, "Estudiante dado de Alta", "Success", JOptionPane.INFORMATION_MESSAGE);
-		}else {
+		}else {//Si si, hecha un error
 			JOptionPane.showMessageDialog(null, "No Ctrl Duplicado", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}

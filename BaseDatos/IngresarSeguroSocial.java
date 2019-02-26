@@ -75,18 +75,24 @@ public class IngresarSeguroSocial extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int NoCtrlx = Integer.parseInt(textNoCtrl.getText());
-				int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
-				String textox = txtCodigoImss.getText();
+				try {
+					int NoCtrlx = Integer.parseInt(textNoCtrl.getText());
+					int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
+					String textox = txtCodigoImss.getText();
 
-				//Da el codigo al estudiante
-				principal.lista.estudiantes.get(pos).setSeguroCode(textox);
-				// Quita el texto a los cuadros
-				textNoCtrl.setText(null);
-				txtCodigoImss.setText(null);
-				// Sets seguro to true
-				principal.lista.estudiantes.get(pos).setSeguro(true);
-
+					// Da el codigo al estudiante
+					principal.lista.estudiantes.get(pos).setSeguroCode(textox);
+					
+					// Quita el texto a los cuadros
+					textNoCtrl.setText(null);
+					txtCodigoImss.setText(null);
+					
+					// Sets seguro to true
+					principal.lista.estudiantes.get(pos).setSeguro(true);
+					
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnAceptar.setBounds(486, 233, 97, 25);

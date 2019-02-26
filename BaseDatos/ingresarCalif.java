@@ -29,7 +29,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JList;
 
 public class ingresarCalif extends JInternalFrame {
-	// Obtener el contexto del Frame principal Hospital
+	// Obtener el contexto del Frame principal Tecnologico
 	public Tecnologico principal;
 	public Estudiante estudiantex = null;
 	public JPanel contentPanel;
@@ -65,21 +65,29 @@ public class ingresarCalif extends JInternalFrame {
 		JButton btnBuscarNoCtrl = new JButton("Buscar No Ctrl");
 		btnBuscarNoCtrl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
 				int NoCtrlx = Integer.parseInt(txtBuscar.getText());
 				int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
+				
 				// Sets textCarrera de la carrera del estudiante
 				textCarrera.setText(principal.lista.estudiantes.get(pos).getCarrera());
 				// Sets textNombre del nombre del estudiante
 				textNombre.setText(principal.lista.estudiantes.get(pos).getNombre());
 				// and so on...
 				textHorario.setText(principal.lista.estudiantes.get(pos).getHorario());
+				
+				//Aqui pone los datos de la materia (el nombre de la materia) a la comboBox
 				String[] horariosx = new String[principal.lista.estudiantes.get(pos).getMateria().size()];
 				for (int i = 0; i < principal.lista.estudiantes.get(pos).getMateria().size(); i++) {
 					horariosx[i] = principal.lista.estudiantes.get(pos).getMateria().get(i).getAsignatura();
 				}
+				
 				comboBox.setModel(new DefaultComboBoxModel<>(horariosx));
 				btnAceptar.setEnabled(true);
 				btnCancelar.setEnabled(true);
+				}catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnBuscarNoCtrl.setBounds(558, 89, 120, 25);
@@ -145,28 +153,33 @@ public class ingresarCalif extends JInternalFrame {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int NoCtrlx = Integer.parseInt(txtBuscar.getText());
-				int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
-				int posM = comboBox.getSelectedIndex();
-				double califx = Double.parseDouble(textCalif.getText());
-				if (califx <= 100 && califx >= 0) {
-					principal.lista.estudiantes.get(pos).getMateria().get(posM).setCalificacion(califx);
-				} else {
-					JOptionPane.showMessageDialog(null, "La calificacion no puede ser mayor que 100 o menor que 0",
-							"Out of bounds", JOptionPane.ERROR_MESSAGE);
+				try {
+					int NoCtrlx = Integer.parseInt(txtBuscar.getText());
+					int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
+					int posM = comboBox.getSelectedIndex();
+					double califx = Double.parseDouble(textCalif.getText());
+					if (califx <= 100 && califx >= 0) {
+						principal.lista.estudiantes.get(pos).getMateria().get(posM).setCalificacion(califx);
+					} else {
+						JOptionPane.showMessageDialog(null, "La calificacion no puede ser mayor que 100 o menor que 0",
+								"Out of bounds", JOptionPane.ERROR_MESSAGE);
 
+					}
+					textCalif.setText(null);
+					textCarrera.setText(null);
+					textHorario.setText(null);
+					textNombre.setText(null);
+					textCalif.setText(null);
+					txtBuscar.setText(null);
+					btnAceptar.setEnabled(false);
+					btnCancelar.setEnabled(false);
+
+					// Test que funciono bien
+					System.out.println("Calif final"
+							+ principal.lista.estudiantes.get(pos).getMateria().get(posM).getCalificacion());
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
-				textCalif.setText(null);
-				textCarrera.setText(null);
-				textHorario.setText(null);
-				textNombre.setText(null);
-				textCalif.setText(null);
-				txtBuscar.setText(null);
-				btnAceptar.setEnabled(false);
-				btnCancelar.setEnabled(false);
-				
-				//Test que funciono bien
-				System.out.println("Calif final"+principal.lista.estudiantes.get(pos).getMateria().get(posM).getCalificacion());
 			}
 		});
 		btnAceptar.setEnabled(false);

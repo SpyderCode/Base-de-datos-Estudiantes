@@ -29,7 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class mostrarSeguro extends JInternalFrame {
-	// Obtener el contexto del Frame principal Hospital
+	// Obtener el contexto del Frame principal Tecnologico
 	public Tecnologico principal;
 	public Estudiante estudiantex = null;
 	public JPanel contentPanel;
@@ -50,9 +50,8 @@ public class mostrarSeguro extends JInternalFrame {
 		getContentPane().add(scrollPane);
 		scrollPane.setViewportView(table);
 
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(
-				"Images/brand.gif"));
+		JLabel label = new JLabel();
+		label.setIcon(new ImageIcon("Images/brand.gif"));
 		label.setBounds(-20, 0, 183, 169);
 		getContentPane().add(label);
 
@@ -64,20 +63,27 @@ public class mostrarSeguro extends JInternalFrame {
 		JButton btnActualizar = new JButton("Actualizar");
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String [] encabezados= {"No.Ctrl","Codigo","Nombre"};
-				Object datos[][]=new Object[principal.lista.estudiantes.size()][];
-				int renglon=0;
-				for(Estudiante x:principal.lista.estudiantes) {
-					datos[renglon]=new Object[4];
-					if(x.isSeguro()) {
-					datos[renglon][0]=x.getNoCtrl();
-					datos[renglon][1]=x.getSeguroCode();
-					datos[renglon][2]=x.getNombre();
+				try {
+					String[] encabezados = { "No.Ctrl", "Codigo", "Nombre" };
+					Object datos[][] = new Object[principal.lista.estudiantes.size()][];
+					int renglon = 0;
+					for (Estudiante x : principal.lista.estudiantes) {
+						datos[renglon] = new Object[4];
+						if (x.isSeguro()) {
+							//No Ctrl
+							datos[renglon][0] = x.getNoCtrl();
+							//Codigo de seguro
+							datos[renglon][1] = x.getSeguroCode();
+							//Nombre del estudiante
+							datos[renglon][2] = x.getNombre();
+						}
+						renglon++;
 					}
-					renglon++;
+					DefaultTableModel modelo = new DefaultTableModel(datos, encabezados);
+					table.setModel(modelo);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
-				DefaultTableModel modelo=new DefaultTableModel(datos,encabezados);
-				table.setModel(modelo);
 			}
 		});
 		btnActualizar.setBounds(581, 182, 97, 25);
@@ -85,22 +91,33 @@ public class mostrarSeguro extends JInternalFrame {
 
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
-				String [] encabezados= {"No.Ctrl","Codigo","Nombre"};
-				Object datos[][]=new Object[principal.lista.estudiantes.size()][];
-				int renglon=0;
-				int NoCtrlx=Integer.parseInt(textBuscar.getText());
-				int pos=principal.lista.buscarPosicionEstudiante(NoCtrlx);
-				for (int i = pos; i < principal.lista.estudiantes.size(); i++) {
-					datos[renglon]=new Object[4];
-					datos[renglon][0]=principal.lista.estudiantes.get(i).getNoCtrl();
-					datos[renglon][1]=principal.lista.estudiantes.get(i).getSeguroCode();
-					datos[renglon][2]=principal.lista.estudiantes.get(i).getNombre();
-					renglon++;
+				try {
+					String[] encabezados = { "No.Ctrl", "Codigo", "Nombre" };
+					Object datos[][] = new Object[principal.lista.estudiantes.size()][];
+
+					int renglon = 0;
+					int NoCtrlx = Integer.parseInt(textBuscar.getText());
+					int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
+
+					// Al igual de la clase PedirEstudianteDatos.java, este empieza desde el
+					// estudiante deseado y sigue
+					for (int i = pos; i < principal.lista.estudiantes.size(); i++) {
+						datos[renglon] = new Object[4];
+						if (principal.lista.estudiantes.get(i).isSeguro()) {
+							datos[renglon][0] = principal.lista.estudiantes.get(i).getNoCtrl();
+							datos[renglon][1] = principal.lista.estudiantes.get(i).getSeguroCode();
+							datos[renglon][2] = principal.lista.estudiantes.get(i).getNombre();
+						}
+						renglon++;
+					}
+					DefaultTableModel modelo = new DefaultTableModel(datos, encabezados);
+					table.setModel(modelo);
+					
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
-				DefaultTableModel modelo=new DefaultTableModel(datos,encabezados);
-				table.setModel(modelo);
 			}
 		});
 		btnBuscar.setBounds(24, 182, 97, 25);

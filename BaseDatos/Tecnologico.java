@@ -191,7 +191,7 @@ public class Tecnologico extends JFrame {
 		JMenuItem mntmIngresar = new JMenuItem("Ingresar");
 		mntmIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				aLTAeSTUDIANTE2 ventantaInterna = new aLTAeSTUDIANTE2("Alta de Usuario", true, true, true, t);
+				altaEstudiante ventantaInterna = new altaEstudiante("Alta de Usuario", true, true, true, t);
 				principal.add(ventantaInterna);
 				ventantaInterna.setVisible(true);
 			}

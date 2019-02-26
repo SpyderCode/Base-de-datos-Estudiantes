@@ -27,7 +27,7 @@ import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
 
 public class bajaEstudiante extends JInternalFrame {
-	// Obtener el contexto del Frame principal Hospital
+	// Obtener el contexto del Frame principal Tecnologico
 	public Tecnologico principal;
 	public Estudiante estudiantex = null;
 	public JPanel contentPanel;
@@ -126,7 +126,7 @@ public class bajaEstudiante extends JInternalFrame {
 		txtSexo.setColumns(10);
 		txtSexo.setBounds(422, 194, 35, 22);
 		getContentPane().add(txtSexo);
-		
+
 		JButton btnBuscar = new JButton("Buscar");
 		JButton btnBorrar = new JButton("Borrar");
 		JButton btnCancelar = new JButton("Cancelar");
@@ -142,43 +142,54 @@ public class bajaEstudiante extends JInternalFrame {
 				btnCancelar.setEnabled(false);
 			}
 		});
-		
+
 		btnBorrar.setEnabled(false);
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int NoCtrlx = Integer.parseInt(txtBuscar.getText());
-				principal.lista.eliminarEstudiante(NoCtrlx);
-				txtCarrera.setText(null);
-				txtEdad.setText(null);
-				txtHorario.setText(null);
-				txtNombre.setText(null);
-				txtSexo.setText(null);
-				txtBuscar.setText(null);
-				btnBorrar.setEnabled(false);
-				btnCancelar.setEnabled(false);
-				JOptionPane.showMessageDialog(null,"Estudiante borrado");
+				try {
+					int NoCtrlx = Integer.parseInt(txtBuscar.getText());
+					principal.lista.eliminarEstudiante(NoCtrlx);
+
+					txtCarrera.setText(null);
+					txtEdad.setText(null);
+					txtHorario.setText(null);
+					txtNombre.setText(null);
+					txtSexo.setText(null);
+					txtBuscar.setText(null);
+					btnBorrar.setEnabled(false);
+					btnCancelar.setEnabled(false);
+
+					JOptionPane.showMessageDialog(null, "Estudiante borrado");
+
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnBorrar.setBounds(424, 260, 97, 25);
 		getContentPane().add(btnBorrar);
 
-		
 		btnCancelar.setEnabled(false);
 		btnCancelar.setBounds(307, 260, 97, 25);
 		getContentPane().add(btnCancelar);
 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int NoCtrlx = Integer.parseInt(txtBuscar.getText());
-				int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
-				txtCarrera.setText(principal.lista.estudiantes.get(pos).getCarrera());
-				txtEdad.setText("" + principal.lista.estudiantes.get(pos).getEdad());
-				txtHorario.setText(principal.lista.estudiantes.get(pos).getHorario());
-				txtNombre.setText(principal.lista.estudiantes.get(pos).getNombre());
-				txtSexo.setText("" + principal.lista.estudiantes.get(pos).getSexo());
+				try {
+					int NoCtrlx = Integer.parseInt(txtBuscar.getText());
+					int pos = principal.lista.buscarPosicionEstudiante(NoCtrlx);
+					
+					txtCarrera.setText(principal.lista.estudiantes.get(pos).getCarrera());
+					txtEdad.setText("" + principal.lista.estudiantes.get(pos).getEdad());
+					txtHorario.setText(principal.lista.estudiantes.get(pos).getHorario());
+					txtNombre.setText(principal.lista.estudiantes.get(pos).getNombre());
+					txtSexo.setText("" + principal.lista.estudiantes.get(pos).getSexo());
 
-				btnBorrar.setEnabled(true);
-				btnCancelar.setEnabled(true);
+					btnBorrar.setEnabled(true);
+					btnCancelar.setEnabled(true);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error: " + ex, "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnBuscar.setBounds(386, 109, 97, 25);

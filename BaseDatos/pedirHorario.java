@@ -132,7 +132,7 @@ public class pedirHorario extends JInternalFrame {
 					}
 					//Profesor
 					datos[renglon][8]=principal.lista.estudiantes.get(pos).getMateria().get(i).getProfesor();
-
+					renglon++;
 				}
 				DefaultTableModel modelo=new DefaultTableModel(datos,encabezados);
 				table.setModel(modelo);

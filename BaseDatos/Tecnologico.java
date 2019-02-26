@@ -32,6 +32,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.SpringLayout;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class Tecnologico extends JFrame {
 	JDesktopPane principal;
@@ -60,10 +64,24 @@ public class Tecnologico extends JFrame {
 		Tecnologico t = this;
 		setTitle("TECNOLOGICO DE ZACATECAS");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(10, 10, 960, 642);
+		setBounds(10, 10, 1138, 753);
 		principal = new JDesktopPane();
-		principal.setBackground(Color.LIGHT_GRAY);
+		principal.setBackground(Color.WHITE);
 		setContentPane(principal);
+		principal.setLayout(null);
+		this.repaint();
+		
+		JLabel lblNewLabel_1 = new JLabel("I.T.Z");
+		lblNewLabel_1.setForeground(new Color(0, 0, 128));
+		lblNewLabel_1.setBackground(Color.BLUE);
+		lblNewLabel_1.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 200));
+		lblNewLabel_1.setBounds(-13, -54, 541, 284);
+		principal.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Ricardo Echaniz\\Documents\\Tecnologico\\Segundo A\u00F1o\\Estructuras de Datos\\Unidad 3 Datos Lineales\\eclipse-workspace\\Error en linea 1\\Images\\TecNM2017T.png"));
+		lblNewLabel_2.setBounds(0, 430, 475, 237);
+		principal.add(lblNewLabel_2);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -81,10 +99,7 @@ public class Tecnologico extends JFrame {
 						if (archivo != null) {
 							FileOutputStream fos = new FileOutputStream(archivo);
 							ObjectOutputStream oos = new ObjectOutputStream(fos);
-							/*
-							 * Por horita no funciona
-							 * */
-							// Escribe cada objeto paciente en el archivo
+							
 							for (Estudiante p : lista.estudiantes) {
 								oos.writeObject(p);
 							}
@@ -137,16 +152,20 @@ public class Tecnologico extends JFrame {
 		JMenu mnCalificacion = new JMenu("Calificacion");
 		menuBar.add(mnCalificacion);
 
-		JMenuItem mntmEstudiante = new JMenuItem("Estudiante");
+		JMenuItem mntmEstudiante = new JMenuItem("Ingresar");
+		mntmEstudiante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ingresarCalif ventanaInterna=new ingresarCalif("Ingresar Calificacion",  true, true, true, t);
+				principal.add(ventanaInterna);
+				ventanaInterna.setVisible(true);
+			}
+		});
 		mnCalificacion.add(mntmEstudiante);
-
-		JMenuItem mntmMaestro = new JMenuItem("Maestro");
-		mnCalificacion.add(mntmMaestro);
 
 		JMenu mnHorarios = new JMenu("Horarios");
 		menuBar.add(mnHorarios);
 
-		JMenuItem mntmEstudiante_1 = new JMenuItem("Estudiante");
+		JMenuItem mntmEstudiante_1 = new JMenuItem("Ver Horario Estudiante");
 		mntmEstudiante_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				pedirHorario ventanaInterna = new pedirHorario("Pide tu horario", true, true, true, t);
@@ -156,7 +175,7 @@ public class Tecnologico extends JFrame {
 		});
 		mnHorarios.add(mntmEstudiante_1);
 
-		JMenuItem mntmMaestro_1 = new JMenuItem("Maestro");
+		JMenuItem mntmMaestro_1 = new JMenuItem("Generar Horario Estudiante");
 		mntmMaestro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				altaHorario ventantaInterna = new altaHorario("Ingresar Horarios al Alumnos", true, true, true, t);
@@ -201,22 +220,59 @@ public class Tecnologico extends JFrame {
 		});
 		mnDatosAlumno.add(mntmBaja);
 
-		JMenu mnNoCtrl = new JMenu("No. Ctrl");
-		menuBar.add(mnNoCtrl);
-
 		JMenu mnSeguroSocial = new JMenu("Seguro social");
 		menuBar.add(mnSeguroSocial);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Dar de alta");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IngresarSeguroSocial ventanaInterna=new IngresarSeguroSocial("Dar de baja a un estudiante", true, true,
+						true, t);
+				principal.add(ventanaInterna);
+				ventanaInterna.setVisible(true);
+			}
+		});
+		mnSeguroSocial.add(mntmNewMenuItem);
+		
+		JMenuItem mntmMostrar = new JMenuItem("Mostrar");
+		mntmMostrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		mnSeguroSocial.add(mntmMostrar);
 
 		JMenu mnKardex = new JMenu("Kardex");
 		menuBar.add(mnKardex);
+		
+		JMenuItem mntmObtener = new JMenuItem("Obtener");
+		mntmObtener.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				kardex ventanaInterna=new kardex("Kardex", true, true,
+						true, t);
+				principal.add(ventanaInterna);
+				ventanaInterna.setVisible(true);
+			}
+		});
+		mnKardex.add(mntmObtener);
 
 		JMenu mnAbout = new JMenu("About");
 		menuBar.add(mnAbout);
 
 		JMenuItem mntmCopyright = new JMenuItem("Copyright");
+		mntmCopyright.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "OC please no steal", "Copyright - es mio prro", JOptionPane.OK_OPTION);
+			}
+		});
 		mnAbout.add(mntmCopyright);
 
 		JMenuItem mntmAboutUs = new JMenuItem("About us");
+		mntmAboutUs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Creador: Me\n\nEquipo: Error en linea 1", "About", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		mnAbout.add(mntmAboutUs);
 	}
 }

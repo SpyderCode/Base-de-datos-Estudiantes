@@ -1,13 +1,15 @@
 package BaseDatos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Materias {
+public class Materias implements Serializable{
 	//Atributos
 	private String Asignatura;
 	private char grupo;
 	private int cred;
 	private String Profesor;
+	private double Calificacion;
 	private ArrayList<Horarios> horario=new ArrayList<Horarios>();
 	
 	public Materias() {}
@@ -61,6 +63,14 @@ public class Materias {
 	}
 	public void AltaDia(Horarios horariox) {
 		horario.add(horariox);
+	}
+
+	public double getCalificacion() {
+		return Calificacion;
+	}
+
+	public void setCalificacion(double calificacion) {
+		Calificacion = calificacion;
 	}
 
 }

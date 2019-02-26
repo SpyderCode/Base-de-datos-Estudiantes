@@ -223,6 +223,8 @@ public class altaHorario extends JInternalFrame{
 				}
 				principal.lista.estudiantes.get(pos).altaMateria(materia);
 				System.out.println("Test: "+principal.lista.estudiantes.get(pos).getMateria().get(0).getGrupo());
+				
+				txtNoCtrl.setText(null);//Borra el numero de control del texto
 			}
 		});
 		btnNewButton.setBounds(326, 288, 97, 25);

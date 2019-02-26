@@ -15,6 +15,8 @@ public class Estudiante implements Serializable {
 	private String horario;
 	private int numClases;
 	private String carrera;
+	private boolean seguro;
+	private String SeguroCode;
 	private ArrayList<Materias> materia=new ArrayList<Materias>();
 	public Estudiante(int noCtrl, String nombre, char sexo, int edad, String carrera,String horario) {
 		super();
@@ -86,6 +88,22 @@ public class Estudiante implements Serializable {
 		this.NoCtrl = Noctrl;
 	}
 
+
+	public boolean isSeguro() {
+		return seguro;
+	}
+	
+	public void setSeguro(boolean seguro) {
+		this.seguro = seguro;
+	}
+
+	public String getSeguroCode() {
+		return SeguroCode;
+	}
+
+	public void setSeguroCode(String seguroCode) {
+		SeguroCode = seguroCode;
+	}
 
 	@Override
 	public int hashCode() {

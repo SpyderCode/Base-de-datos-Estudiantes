@@ -1,6 +1,8 @@
 package BaseDatos;
 
-public class Horarios {
+import java.io.Serializable;
+
+public class Horarios implements Serializable{
 	private String Dia;
 	private String hora;
 	public Horarios() {}

@@ -40,7 +40,7 @@ public class pedirHorario extends JInternalFrame {
 
 	public pedirHorario(String titulo, boolean tamaño, boolean cerrar, boolean maximizar, Tecnologico padre) {
 		super(titulo, tamaño, cerrar, maximizar);
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(new Color(255, 140, 0));
 		setVisible(true);
 		principal = padre;
 		contentPanel = (JPanel) this.getContentPane();
@@ -53,7 +53,7 @@ public class pedirHorario extends JInternalFrame {
 
 		JLabel lblHorario = new JLabel("Horario");
 		lblHorario.setFont(new Font("Impact", Font.ITALIC, 66));
-		lblHorario.setForeground(Color.BLUE);
+		lblHorario.setForeground(new Color(139, 0, 0));
 		lblHorario.setBounds(12, 13, 240, 65);
 		getContentPane().add(lblHorario);
 

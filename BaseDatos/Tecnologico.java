@@ -20,9 +20,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Vista.AltaPaciente;
-import Vista.Hospital;
-
 //import Modelo.Paciente;
 
 //import Modelo.Paciente;
